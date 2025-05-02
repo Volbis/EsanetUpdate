@@ -1,0 +1,816 @@
+{% extends 'inscription/base.html' %}
+
+{% block title %}ESANET{% endblock %}
+
+{% block content %}
+<!-- Hero Section avec vidéo ou image parallax -->
+<div class="hero-section position-relative">
+    <div class="hero-bg"></div>
+    <div class="container position-relative">
+        <div class="row py-5">
+            <div class="col-lg-8 mx-auto text-center py-5">
+                <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                    <h1 class="display-3 text-white fw-bold text-uppercase" style="letter-spacing: 2px;">
+                        <span class="text-gradient">ESATIC</span>
+                    </h1>
+                    <p class="lead text-white mb-4">École Supérieure Africaine des Technologies de l'Information et de la Communication</p>
+                    <hr class="my-4 bg-light opacity-25 w-50 mx-auto">
+                    <div class="badge-container mb-4">
+                        <span class="badge bg-primary px-3 py-2 rounded-pill me-2 mb-2">Inscriptions 2022-2023</span>
+                        <span class="badge bg-success px-3 py-2 rounded-pill me-2 mb-2">Excellence académique</span>
+                        <span class="badge bg-info px-3 py-2 rounded-pill">Innovation technologique</span>
+                    </div>
+                    <div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
+                        <a href="{% url 'nouvelle_inscription' %}" class="btn btn-primary btn-lg px-4 py-3 rounded-pill fw-bold hover-scale">
+                            <i class="fas fa-user-plus me-2"></i>S'inscrire maintenant
+                        </a>
+                        <a href="{% url 'verifier_statut' %}" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill fw-bold hover-scale">
+                            <i class="fas fa-search me-2"></i>Vérifier mon statut
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats flottantes -->
+    <div class="container stats-container">
+        <div class="row">
+            <div class="col-12">
+                <div class="stats-wrapper" data-aos="fade-up" data-aos-delay="300">
+                    <div class="row g-0">
+                        <div class="col-md-3">
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+                                <div class="stat-number counter" data-count="1500">0</div>
+                                <div class="stat-label">Étudiants</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                                <div class="stat-number counter" data-count="120">0</div>
+                                <div class="stat-label">Enseignants</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-flask"></i></div>
+                                <div class="stat-number counter" data-count="15">0</div>
+                                <div class="stat-label">Laboratoires</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                                <div class="stat-number counter" data-count="98">0</div>
+                                <div class="stat-label">% Insertion pro.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <!-- Services section avec design moderne -->
+    <div class="row mb-5" data-aos="fade-up">
+        <div class="col-12 text-center mb-5">
+            <span class="text-primary text-uppercase fw-bold mb-2 d-block letter-spacing-2">Nos services</span>
+            <h2 class="display-5 fw-bold mb-3">Services étudiants <span class="text-gradient">innovants</span></h2>
+            <p class="text-muted w-md-75 mx-auto">Découvrez nos services en ligne conçus pour simplifier votre parcours académique à l'ESATIC</p>
+            <div class="section-divider mx-auto my-4"></div>
+        </div>
+
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="card modern-card h-100">
+                <div class="card-body p-4 position-relative">
+                    <div class="service-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3 class="card-title h4 fw-bold mb-3 mt-4">Nouvelle Inscription</h3>
+                    <p class="card-text text-muted">Démarrez votre parcours académique à l'ESATIC grâce à notre processus d'inscription simplifié et entièrement en ligne.</p>
+                    <a href="{% url 'nouvelle_inscription' %}" class="stretched-link-icon mt-3">
+                        S'inscrire <i class="fas fa-long-arrow-alt-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="card modern-card h-100">
+                <div class="card-body p-4 position-relative">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="card-title h4 fw-bold mb-3 mt-4">Suivi d'Inscription</h3>
+                    <p class="card-text text-muted">Consultez en temps réel l'état de votre candidature et suivez les prochaines étapes de votre processus d'admission.</p>
+                    <a href="{% url 'verifier_statut' %}" class="stretched-link-icon mt-3">
+                        Vérifier <i class="fas fa-long-arrow-alt-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="card modern-card h-100">
+                <div class="card-body p-4 position-relative">
+                    <div class="service-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <h3 class="card-title h4 fw-bold mb-3 mt-4">Informations Utiles</h3>
+                    <p class="card-text text-muted">Accédez à toutes les informations sur nos programmes académiques, conditions d'admission et calendriers universitaires.</p>
+                    <button type="button" class="stretched-link-icon mt-3" data-bs-toggle="modal" data-bs-target="#infoModal">
+                        En savoir plus <i class="fas fa-long-arrow-alt-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filières Section avec design moderne -->
+    <div class="row my-5 py-5">
+        <div class="col-12 text-center mb-5" data-aos="fade-up">
+            <span class="text-primary text-uppercase fw-bold mb-2 d-block letter-spacing-2">Formations</span>
+            <h2 class="display-5 fw-bold mb-3">Nos filières <span class="text-gradient">d'excellence</span></h2>
+            <p class="text-muted w-md-75 mx-auto">Des formations de pointe adaptées aux besoins du marché et aux défis technologiques actuels</p>
+            <div class="section-divider mx-auto my-4"></div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="specialty-card">
+                <div class="specialty-icon-wrapper">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="specialty-content">
+                    <h5 class="fw-bold mb-3">Informatique</h5>
+                    <p>Formation en développement logiciel, bases de données, intelligence artificielle et systèmes d'information.</p>
+                    <div class="specialty-badges">
+                        <span class="badge specialty-badge">Développement Web</span>
+                        <span class="badge specialty-badge">Mobile</span>
+                        <span class="badge specialty-badge">IA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="specialty-card">
+                <div class="specialty-icon-wrapper">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="specialty-content">
+                    <h5 class="fw-bold mb-3">Réseaux et Télécoms</h5>
+                    <p>Formation en administration réseau, télécommunications, cloud computing et infrastructures IT.</p>
+                    <div class="specialty-badges">
+                        <span class="badge specialty-badge">Cloud</span>
+                        <span class="badge specialty-badge">Télécom</span>
+                        <span class="badge specialty-badge">Réseaux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="specialty-card">
+                <div class="specialty-icon-wrapper">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="specialty-content">
+                    <h5 class="fw-bold mb-3">Sécurité Informatique</h5>
+                    <p>Formation en cybersécurité, cryptographie, audit de sécurité et gestion des risques informatiques.</p>
+                    <div class="specialty-badges">
+                        <span class="badge specialty-badge">Cybersécurité</span>
+                        <span class="badge specialty-badge">Audit</span>
+                        <span class="badge specialty-badge">Risques</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="specialty-card">
+                <div class="specialty-icon-wrapper">
+                    <i class="fas fa-th"></i>
+                </div>
+                <div class="specialty-content">
+                    <h5 class="fw-bold mb-3">Spécialités Émergentes</h5>
+                    <p>Formations en multimédia, Internet des objets (IoT), data science et autres domaines novateurs des TIC.</p>
+                    <div class="specialty-badges">
+                        <span class="badge specialty-badge">Data Science</span>
+                        <span class="badge specialty-badge">IoT</span>
+                        <span class="badge specialty-badge">Multimédia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Témoignages -->
+    <div class="row py-5 my-5">
+        <div class="col-12 text-center mb-5" data-aos="fade-up">
+            <span class="text-primary text-uppercase fw-bold mb-2 d-block letter-spacing-2">Témoignages</span>
+            <h2 class="display-5 fw-bold mb-3">Ce que disent nos <span class="text-gradient">étudiants</span></h2>
+            <p class="text-muted w-md-75 mx-auto">Découvrez les expériences enrichissantes de nos étudiants et diplômés</p>
+            <div class="section-divider mx-auto my-4"></div>
+        </div>
+
+        <div class="col-12" data-aos="fade-up">
+            <div class="testimonial-slider">
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p>L'ESATIC m'a fourni des compétences techniques solides et un vaste réseau professionnel qui m'ont permis de démarrer ma carrière dans les meilleures conditions.</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h6 class="mb-0 fw-bold">Kouamé Olivier</h6>
+                                <small class="text-muted">Promotion 2022 - Ingénieur Réseau</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p>Les projets pratiques et les stages m'ont préparée aux défis réels du monde professionnel. Je suis reconnaissante pour l'excellence de la formation reçue.</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h6 class="mb-0 fw-bold">Diallo Aminata</h6>
+                                <small class="text-muted">Promotion 2023 - Développeuse Full-Stack</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p>La qualité des enseignements et l'accompagnement personnalisé font de l'ESATIC une institution de référence pour la formation en technologies de l'information.</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h6 class="mb-0 fw-bold">Touré Ibrahim</h6>
+                                <small class="text-muted">Promotion 2021 - Expert en Cybersécurité</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bannière CTA moderne -->
+    <div class="row my-5" data-aos="fade-up">
+        <div class="col-12">
+            <div class="cta-card">
+                <div class="cta-content text-center">
+                    <h3 class="fw-bold mb-3">Prêt à façonner votre avenir numérique ?</h3>
+                    <p class="mb-4">Rejoignez l'ESATIC et développez les compétences technologiques qui définiront le futur de l'Afrique.</p>
+                    <a href="{% url 'nouvelle_inscription' %}" class="btn btn-light btn-lg px-4 py-3 fw-bold rounded-pill hover-scale">
+                        <i class="fas fa-rocket me-2"></i>Commencer mon inscription
+                    </a>
+                    <div class="cta-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pour les informations supplémentaires -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content border-0 modal-modern">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="infoModalLabel">
+                    <i class="fas fa-info-circle me-2"></i>Informations académiques
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="info-card">
+                            <div class="info-card-header">
+                                <i class="fas fa-user-check text-primary"></i>
+                                <h5 class="fw-bold">Conditions d'admission</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item border-0 ps-0"><i class="fas fa-check-circle text-success me-2"></i>Baccalauréat ou diplôme équivalent</li>
+                                <li class="list-group-item border-0 ps-0"><i class="fas fa-check-circle text-success me-2"></i>Moins de 25 ans (formation initiale)</li>
+                                <li class="list-group-item border-0 ps-0"><i class="fas fa-check-circle text-success me-2"></i>Réussite au test d'admission</li>
+                                <li class="list-group-item border-0 ps-0"><i class="fas fa-check-circle text-success me-2"></i>Dossier complet avec pièces justificatives</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="info-card">
+                            <div class="info-card-header">
+                                <i class="fas fa-calendar-alt text-primary"></i>
+                                <h5 class="fw-bold">Calendrier 2025-2026</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item border-0 ps-0 d-flex justify-content-between">
+                                    <span><i class="fas fa-calendar-day text-primary me-2"></i>Inscriptions:</span>
+                                    <span class="fw-bold">Mai - Août 2025</span>
+                                </li>
+                                <li class="list-group-item border-0 ps-0 d-flex justify-content-between">
+                                    <span><i class="fas fa-calendar-day text-primary me-2"></i>Tests d'admission:</span>
+                                    <span class="fw-bold">Septembre 2025</span>
+                                </li>
+                                <li class="list-group-item border-0 ps-0 d-flex justify-content-between">
+                                    <span><i class="fas fa-calendar-day text-primary me-2"></i>Début des cours:</span>
+                                    <span class="fw-bold">Octobre 2025</span>
+                                </li>
+                                <li class="list-group-item border-0 ps-0 d-flex justify-content-between">
+                                    <span><i class="fas fa-calendar-day text-primary me-2"></i>Fin de l'année:</span>
+                                    <span class="fw-bold">Juillet 2026</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="contact-card">
+                            <div class="contact-card-header">
+                                <i class="fas fa-address-card text-primary"></i>
+                                <h5 class="fw-bold">Contact</h5>
+                            </div>
+                            <div class="contact-card-body">
+                                <p>Pour toute information complémentaire, n'hésitez pas à contacter notre service des admissions:</p>
+                                <div class="contact-info">
+                                    <div class="contact-item">
+                                        <i class="fas fa-envelope text-primary"></i>
+                                        <span>admissions@esatic.edu.ci</span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <i class="fas fa-phone text-primary"></i>
+                                        <span>+225 27 05 54 40 01</span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <i class="fas fa-map-marker-alt text-primary"></i>
+                                        <span>Abidjan, Côte d'Ivoire</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Fermer</button>
+                <a href="{% url 'nouvelle_inscription' %}" class="btn btn-primary rounded-pill">S'inscrire maintenant</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS pour les animations et styles modernes -->
+<style>
+    /* Variables globales */
+    :root {
+        --primary-color: #0d6efd;
+        --primary-dark: #0b5ed7;
+        --primary-light: #cfe2ff;
+        --gradient-start: #4e73df;
+        --gradient-end: #36b9cc;
+        --dark-blue: #1a3c61;
+        --card-border-radius: 16px;
+        --transition-normal: all 0.3s ease;
+        --box-shadow-normal: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --box-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Animation de comptage */
+    @keyframes count-up {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Stylisation générale */
+    .letter-spacing-2 {
+        letter-spacing: 2px;
+    }
+
+    .section-divider {
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+        border-radius: 2px;
+    }
+
+    .text-gradient {
+        background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .hover-scale {
+        transition: var(--transition-normal);
+    }
+
+    .hover-scale:hover {
+        transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero-section {
+        padding: 100px 0 160px 0;
+        overflow: hidden;
+    }
+
+    .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(19, 38, 87, 0.9), rgba(24, 42, 70, 0.9)), url('/static/images/campus.jpg') no-repeat center center;
+        background-size: cover;
+        z-index: -1;
+    }
+
+    .hero-content {
+        z-index: 2;
+        position: relative;
+    }
+
+    .badge-container .badge {
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    /* Stats flottantes */
+    .stats-container {
+        position: relative;
+        margin-top: -80px;
+        z-index: 10;
+    }
+
+    .stats-wrapper {
+        background: white;
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--box-shadow-normal);
+        overflow: hidden;
+    }
+
+    .stat-item {
+        text-align: center;
+        padding: 30px 15px;
+        border-right: 1px solid rgba(0,0,0,0.05);
+        transition: var(--transition-normal);
+    }
+
+    .stat-item:hover {
+        background-color: var(--primary-light);
+        transform: translateY(-5px);
+    }
+
+    .stat-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--dark-blue);
+        margin-bottom: 5px;
+    }
+
+    .stat-label {
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #6c757d;
+    }
+
+    /* Service Cards */
+    .modern-card {
+        border-radius: var(--card-border-radius);
+        border: none;
+        overflow: hidden;
+        box-shadow: var(--box-shadow-normal);
+        transition: var(--transition-normal);
+    }
+
+    .modern-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--box-shadow-hover);
+    }
+
+    .service-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: 0 5px 15px rgba(78, 115, 223, 0.3);
+    }
+
+    .stretched-link-icon {
+        color: var(--primary-color);
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        transition: var(--transition-normal);
+        border: none;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .stretched-link-icon:hover {
+        color: var(--primary-dark);
+        padding-left: 5px;
+    }
+
+    /* Specialty Cards */
+    .specialty-card {
+        background: white;
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--box-shadow-normal);
+        overflow: hidden;
+        height: 100%;
+        transition: var(--transition-normal);
+        position: relative;
+    }
+
+    .specialty-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--box-shadow-hover);
+    }
+
+    .specialty-icon-wrapper {
+        height: 100px;
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2.5rem;
+    }
+
+    .specialty-content {
+        padding: 20px;
+    }
+
+    .specialty-badges {
+        margin-top: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .specialty-badge {
+        background-color: var(--primary-light);
+        color: var(--primary-dark);
+        font-weight: 600;
+        padding: 5px 10px;
+        border-radius: 20px;
+    }
+
+    /* Témoignages */
+    .testimonial-slider {
+        display: flex;
+        gap: 30px;
+        overflow-x: auto;
+        padding: 20px 0;
+        scroll-snap-type: x mandatory;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .testimonial-slider::-webkit-scrollbar {
+        display: none;
+    }
+
+    .testimonial-item {
+        min-width: 350px;
+        max-width: 350px;
+        scroll-snap-align: center;
+    }
+
+    .testimonial-content {
+        background: white;
+        border-radius: var(--card-border-radius);
+        padding: 30px;
+        box-shadow: var(--box-shadow-normal);
+        position: relative;
+        transition: var(--transition-normal);
+    }
+
+    .testimonial-content:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--box-shadow-hover);
+    }
+
+    .testimonial-quote {
+        position: absolute;
+        top: -15px;
+        left: 20px;
+        width: 30px;
+        height: 30px;
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .testimonial-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+        border: 3px solid var(--primary-light);
+    }
+
+    .testimonial-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* CTA Card */
+    .cta-card {
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        color: white;
+        border-radius: var(--card-border-radius);
+        padding: 50px 20px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .cta-shapes .shape {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+    }
+
+    .shape-1 {
+        width: 200px;
+        height: 200px;
+        top: -100px;
+        right: -50px;
+    }
+
+    .shape-2 {
+        width: 150px;
+        height: 150px;
+        bottom: -50px;
+        left: -50px;
+    }
+
+    .shape-3 {
+        width: 100px;
+        height: 100px;
+        bottom: 50px;
+        right: 150px;
+    }
+
+    /* Modal redesign */
+    .modal-modern {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .modal-modern .modal-header {
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        color: white;
+        border-bottom: none;
+        padding: 20px 30px;
+    }
+
+    .info-card, .contact-card {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 20px;
+        height: 100%;
+        transition: var(--transition-normal);
+    }
+
+    .info-card:hover, .contact-card:hover {
+        box-shadow: var(--box-shadow-normal);
+        transform: translateY(-5px);
+    }
+
+    .info-card-header, .contact-card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .info-card-header i, .contact-card-header i {
+        font-size: 1.5rem;
+        margin-right: 15px;
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+    }
+
+    .contact-item i {
+        width: 30px;
+        height: 30px;
+        background: var(--primary-light);
+        color: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+    }
+
+    /* Animation des compteurs */
+    .counter {
+        animation: count-up 1s ease forwards;
+        opacity: 0;
+    }
+</style>
+
+<!-- Scripts pour les animations -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Animation des compteurs
+    const counters = document.querySelectorAll('.counter');
+    
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-count'));
+        let count = 0;
+        const duration = 2000; // 2 secondes
+        const increment = target / (duration / 16);
+        
+        setTimeout(() => {
+            const interval = setInterval(() => {
+                count += increment;
+                counter.innerText = Math.floor(count);
+                
+                if (count >= target) {
+                    counter.innerText = target;
+                    clearInterval(interval);
+                }
+            }, 16);
+        }, 500);
+    });
+    
+    // Initialisation des animations AOS si disponible
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    }
+});
+</script>
+{% endblock %}

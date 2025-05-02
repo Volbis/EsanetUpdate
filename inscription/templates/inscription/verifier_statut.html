@@ -1,0 +1,380 @@
+{% extends 'inscription/base.html' %}
+
+{% block title %}ESATIC - Vérifier le statut de votre inscription{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Variables spécifiques */
+    :root {
+        --status-card-radius: 16px;
+        --status-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        --status-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+    
+    /* Style de la carte principale */
+    .status-card {
+        border-radius: var(--status-card-radius);
+        border: none;
+        overflow: hidden;
+        box-shadow: var(--status-shadow);
+        transition: all 0.3s ease;
+    }
+    
+    .status-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--status-shadow-hover);
+    }
+    
+    /* En-tête de la carte */
+    .status-header {
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        color: white;
+        padding: 30px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .status-header h2 {
+        position: relative;
+        z-index: 2;
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: 0.5px;
+    }
+    
+    .status-header p {
+        position: relative;
+        z-index: 2;
+        margin: 10px 0 0;
+        opacity: 0.9;
+        font-size: 1.1rem;
+    }
+    
+    .status-header-shape {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+    }
+    
+    .shape-1 {
+        width: 120px;
+        height: 120px;
+        top: -40px;
+        right: -20px;
+    }
+    
+    .shape-2 {
+        width: 80px;
+        height: 80px;
+        bottom: -30px;
+        left: 10%;
+    }
+    
+    /* Corps de la carte */
+    .status-body {
+        padding: 40px;
+    }
+    
+    /* Style du formulaire */
+    .status-form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .input-group-text {
+        background-color: var(--primary-light);
+        color: white;
+        border: none;
+        border-radius: 10px 0 0 10px;
+    }
+    
+    .form-control {
+        border-radius: 0 10px 10px 0;
+        padding: 12px 15px;
+        border: 1px solid #e0e0e0;
+        font-size: 16px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 0.25rem rgba(0, 51, 102, 0.2);
+    }
+    
+    /* Instruction cards */
+    .instruction-card {
+        background-color: #f8f9fa;
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: flex-start;
+        transition: all 0.3s ease;
+    }
+    
+    .instruction-card:hover {
+        background-color: #e9ecef;
+        transform: translateX(5px);
+    }
+    
+    .instruction-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary-light);
+        color: white;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+    
+    .instruction-content h5 {
+        font-size: 1rem;
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+    
+    .instruction-content p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+    
+    /* Boutons */
+    .btn-status {
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-status:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        border: none;
+    }
+    
+    .btn-outline-secondary {
+        border: 1px solid #e0e0e0;
+        color: #6c757d;
+    }
+    
+    .btn-outline-secondary:hover {
+        background-color: #f8f9fa;
+        color: #495057;
+    }
+    
+    /* Animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-fade-in {
+        animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .status-header {
+            padding: 20px;
+        }
+        
+        .status-body {
+            padding: 25px;
+        }
+        
+        .form-actions {
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .form-actions .btn {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+            <!-- Carte de vérification de statut -->
+            <div class="status-card animate-fade-in" data-aos="fade-up">
+                <!-- En-tête -->
+                <div class="status-header">
+                    <div class="status-header-shape shape-1"></div>
+                    <div class="status-header-shape shape-2"></div>
+                    <h2><i class="fas fa-search me-2"></i>Suivi de candidature</h2>
+                    <p>Vérifiez l'état d'avancement de votre inscription à l'ESATIC</p>
+                </div>
+                
+                <!-- Corps -->
+                <div class="status-body">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                <i class="fas fa-exclamation-circle me-3 fa-lg"></i>
+                                <div>{{ message }}</div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <div class="text-center mb-4">
+                        <p class="lead">Suivez en temps réel l'évolution de votre candidature en utilisant votre code personnel d'inscription.</p>
+                    </div>
+                    
+                    <!-- Instructions -->
+                    <div class="row mb-4">
+                        <div class="col-md-4 mb-3 mb-md-0" data-aos="fade-up" data-aos-delay="100">
+                            <div class="instruction-card">
+                                <div class="instruction-icon">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                                <div class="instruction-content">
+                                    <h5>Code d'inscription</h5>
+                                    <p>Entrez le code reçu par email après soumission de votre dossier</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3 mb-md-0" data-aos="fade-up" data-aos-delay="200">
+                            <div class="instruction-card">
+                                <div class="instruction-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="instruction-content">
+                                    <h5>Vérification</h5>
+                                    <p>Notre système validera votre identité et récupérera vos informations</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="instruction-card">
+                                <div class="instruction-icon">
+                                    <i class="fas fa-clipboard-list"></i>
+                                </div>
+                                <div class="instruction-content">
+                                    <h5>Statut détaillé</h5>
+                                    <p>Consultez l'état de votre candidature et les prochaines étapes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Formulaire -->
+                    <div class="status-form mt-5" data-aos="fade-up" data-aos-delay="400">
+                        <form method="post" class="needs-validation" novalidate>
+                            {% csrf_token %}
+                            
+                            <div class="mb-4">
+                                <label for="code_inscription" class="form-label fw-bold">Votre code d'inscription</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-fingerprint"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="code_inscription" 
+                                        name="code_inscription" placeholder="Ex: ESATIC-A1B2C3D4" 
+                                        required autocomplete="off" spellcheck="false">
+                                </div>
+                                <div class="form-text mt-2">
+                                    <i class="fas fa-info-circle me-1 text-primary"></i>
+                                    Ce code vous a été transmis par email après la soumission de votre candidature.
+                                </div>
+                                <div class="invalid-feedback">
+                                    Veuillez saisir votre code d'inscription.
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions d-flex mt-4 gap-3">
+                                <button type="submit" class="btn btn-primary btn-status flex-grow-1">
+                                    <i class="fas fa-search me-2"></i>Vérifier mon statut
+                                </button>
+                                <a href="{% url 'accueil' %}" class="btn btn-outline-secondary btn-status">
+                                    <i class="fas fa-home me-2"></i>Retour à l'accueil
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Assistance -->
+                    <div class="text-center mt-5 pt-4 border-top" data-aos="fade-up" data-aos-delay="500">
+                        <h5 class="text-primary mb-3">Besoin d'aide ?</h5>
+                        <p>Si vous avez perdu votre code d'inscription ou rencontrez des difficultés, contactez notre service d'assistance.</p>
+                        <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-3" 
+                                data-bs-toggle="modal" data-bs-target="#contactModal">
+                            <i class="fas fa-envelope me-2"></i>Contacter l'assistance
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animation des éléments au défilement
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false
+            });
+        }
+        
+        // Validation du formulaire
+        const form = document.querySelector('.needs-validation');
+        
+        form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            } else {
+                // Ajouter l'animation de chargement lors de la soumission
+                document.getElementById('pageLoader').style.display = 'flex';
+            }
+            
+            form.classList.add('was-validated');
+        });
+        
+        // Formatage automatique du code d'inscription
+        const codeInput = document.getElementById('code_inscription');
+        
+        codeInput.addEventListener('input', function(e) {
+            // Convertir en majuscules
+            let value = e.target.value.toUpperCase();
+            
+            // Supprimer les caractères non alphanumériques sauf le tiret
+            value = value.replace(/[^A-Z0-9-]/g, '');
+            
+            // Ajouter automatiquement "ESATIC-" si l'utilisateur ne l'a pas saisi
+            if (value && !value.includes('ESATIC-') && value.length <= 6) {
+                if (value.startsWith('E')) {
+                    // Ne rien faire, l'utilisateur est en train de taper ESATIC
+                } else {
+                    value = 'ESATIC-' + value;
+                }
+            }
+            
+            e.target.value = value;
+        });
+    });
+</script>
+{% endblock %}
